@@ -1,0 +1,5 @@
+body{ 
+background: url("../img/fondo.gif");
+background-size: cover;
+min-height: 480px;
+}
