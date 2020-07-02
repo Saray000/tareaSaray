@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Tarjeta de Falicitacion</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@1,500&family=Yellowtail&display=swap" rel="stylesheet">
+
+	<script>
+		function cambiarTamanoEjemplo(){
+			var tam=document.getElementById("tamanoTxt").value;
+			//alert(tam);
+			document.getElementById("ejemploTexto").style.fontSize=tam+"em";
+		}
+
+		function generarTarjeta(){
+			document.getElementById("tarjeta").style.display='block';
+			//revisamos el radio de la imagen que fue elegido y recuperamos la ruta
+			var fondo;
+			if(document.getElementById("tipoImg1").checked)
+					fondo=document.getElementById("tipoImg1").value;
+			else if(document.getElementById("tipoImg2").checked)
+					fondo=document.getElementById("tipoImg2").value;
+			else 	fondo=document.getElementById("tipoImg3").value;
+
+			//agregamos el fondo a la tarjeta
+			document.getElementById("tarjeta").style.backgroundImage="url('"+fondo+"')";
+			document.getElementById("tarjeta").style.backgroundRepeat="no-repeat";
+
+			//insertar textos
+			var titu=document.getElementById("tituloTxt").value;
+			document.getElementById("titulo").innerHTML=titu;
+			var nom=document.getElementById("nombreTxt").value;
+			document.getElementById("nombre").innerHTML=nom;
+			var des=document.getElementById("descripcionTxt").value;
+			document.getElementById("descripcion").innerHTML=des;
+
+			//color de texto
+			var c=document.getElementById("colorTxt").value;
+			document.getElementById("titulo").style.color=c;
+			var c=document.getElementById("colorTxt").value;
+			document.getElementById("nombre").style.color=c;
+			var c=document.getElementById("colorTxt").value;
+			document.getElementById("descripcion").style.color=c;
+
+			//tamaño del texto
+			var tam=document.getElementById("tamanoTxt").value;
+			document.getElementById("titulo").style.fontSize=tam+"em";
+			var tam=document.getElementById("tamanoTxt").value;
+			document.getElementById("nombre").style.fontSize=tam+"em";
+			var tam=document.getElementById("tamanoTxt").value;
+			document.getElementById("descripcion").style.fontSize=tam+"em";
+
+			//validar cual es la tipografia seleccionada y recuperar el valor
+			var tipo;
+			if(document.getElementById("tipoTxt1").checked)
+					tipo=document.getElementById("tipoTxt1").value;
+			else if(document.getElementById("tipoTxt2").checked)
+					tipo=document.getElementById("tipoTxt2").value;
+			else 	tipo=document.getElementById("tipoTxt3").value;
+
+			//asignar la tipografia
+			document.getElementById("titulo").style.fontFamily=tipo;
+			document.getElementById("nombre").style.fontFamily=tipo;
+			document.getElementById("descripcion").style.fontFamily=tipo;
+
+			//ocultar zona de configuracion
+			document.getElementById("contenido").style.display='none';
+
+
+		}
+
+					function cambiarColor2(codigo){
+			switch(codigo){
+				case 'blanco': document.bgColor='ffffff'; 
+							   document.getElementById("blanco").src='imgg/i.png'; 
+							   resetColor(codigo); break;
+
+				case 'rojo': document.bgColor='ff0000'; 
+							 document.getElementById("rojo").src='imgg/i.png'; 
+							 resetColor(codigo); break;
+
+				case 'amarillo': document.bgColor='ffff00'; 
+								 document.getElementById("amarillo").src='imgg/i.png'; 
+								 resetColor(codigo);break;
+
+				case 'verde': document.bgColor='009900'; 
+							  document.getElementById("verde").src='imgg/i.png'; 
+							  resetColor(codigo); break;
+
+				case 'azul': document.bgColor='0000ff'; 
+							 document.getElementById("azul").src='imgg/i.png'; 
+							 resetColor(codigo); break;
+			}
+			function resetColor(color){
+				if(color!='blanco'){
+					document.getElementById("blanco").src='imgg/white.gif';
+				}
+
+				if(color!='rojo'){
+					document.getElementById("rojo").src='imgg/red.gif';
+				}
+
+				if(color!='amarillo'){
+					document.getElementById("amarillo").src='imgg/yellow.gif'; 
+				}
+
+				if(color!='verde'){
+					document.getElementById("verde").src='imgg/green.gif'; 
+				}
+
+				if(color!='azul'){
+					document.getElementById("azul").src='imgg/blue.gif'; 
+				}
+			}
+		}
+	</script>
+</head>
+<body> 
+	<article id="contenido">
+		<h1>Creando una tarjeta</h1>
+		<h2>Elige una imagen</h2>
+			<input type="radio" name="tipoImg" id="tipoImg1" checked value="imgg/moti.jpg">
+			<img src="imgg/moti.jpg" height="150" width="150">
+			<input type="radio" name="tipoImg" id="tipoImg2" value="imgg/sam.jpg">
+			<img src="imgg/sam.jpg" height="150" width="150">
+			<input type="radio" name="tipoImg" id="tipoImg3" value="imgg/cum.jpg">
+			<img src="imgg/cum.jpg" height="150" width="150">
+			<h2>Agregar un nombre</h2>
+			<input type="text" id="nombreTxt">
+			<h2>Agrega un titulo</h2>
+			<input type="text" id="tituloTxt">
+			<h2>Agrega una descripcion</h2>
+				<textarea id="descripcionTxt" cols="30" rows="5"></textarea>
+			<h2>Formato de texto</h2>
+				<label for="colorTxt">Color:</label>
+				<input type="color" id="colorTxt">
+				<label for="colorTxt">Tamaño de Letra:</label>
+				<input type="range" id="tamanoTxt" min="1" max="5" onchange="cambiarTamanoEjemplo()">
+				<label id="ejemploTexto">Ejemplo</label><br>
+
+				<label>Tipografia:</label><br>
+				<input type="radio" name="tipoTxt" id="tipoTxt1" checked value="Chelsea Market">
+				<label id="tipo1">Chelsea</label>
+				<input type="radio" name="tipoTxt" id="tipoTxt2" checked value="Orbitron">
+				<label id="tipo2">Orbitron</label>
+				<input type="radio" name="tipoTxt" id="tipoTxt3" checked value="Pacifico">
+				<label id="tipo3">Pacifico</label>
+				<br>
+				<img src="imgg/ico.jpg" height="60" width="60" onclick="generarTarjeta()">
+				<br><br>
+				<h1>Cambiar color de fondo</h1>
+				<hr>
+				<a onmouseover="cambiarColor2('blanco');" href="">
+					<img id="blanco" src="imgg/white.gif" height="40" width="40">
+				</a>
+				<a onmouseover="cambiarColor2('rojo');" href="">
+					<img id="rojo" src="imgg/red.gif" height="40" width="40">
+				</a>
+				<a onmouseover="cambiarColor2('amarillo');" href="">
+					<img id="amarillo" src="imgg/yellow.gif" height="40" width="40">
+				</a>
+				<a onmouseover="cambiarColor2('verde');" href="">
+					<img id="verde" src="imgg/green.gif" height="40" width="40">
+				</a>
+				<a onmouseover="cambiarColor2('azul');" href="">
+					<img id="azul" src="imgg/blue.gif" height="40" width="40">
+				</a>
+	</article>
+
+	<article id="fon">
+		<article id="tarjeta">
+			<h1 id="nombre"></h1>
+			<h2 id="titulo"></h2>
+			<h3 id="descripcion"></h3>
+		</article>
+	</article>
+</body>
+</html>
