@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>09 Tarea</title>
+	<link rel="stylesheet" type="text/css" href="">
+</head>
+<body>
+	<script>
+	var opcion;
+	do{
+		//ingresamos las variables ano de año para el año que tocara en tu generacion
+    var ano = prompt("Ingresa tu fecha de nacimiento");
+    if(ano>=1994){
+        document.write("Tu generacion es generacion Z");}
+    else if (ano>=1981){
+        document.write("Tu generacion es generacion Y");}
+    else if (ano>=1969){
+        document.write("Tu generacion es generacion X");}
+    else if (ano>=1949){
+        document.write("Tu generacion es baby boom");}
+        //agregamos la variable opcion para preguntar si decea ingresar otro año y se detendra el ciclo cuando ingreses no
+		opcion = prompt("¿Quieres continuar?    si / no ");
+	}	
+	while(opcion=="si");
+	</script>
+</body>
+</html>
